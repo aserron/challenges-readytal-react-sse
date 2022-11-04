@@ -4,6 +4,7 @@ import {object, func} from 'prop-types';
 export class ContactForm extends React.Component {
 
     static defaultProps = {
+
         data: {
             name: '',
             email: '',
@@ -12,6 +13,7 @@ export class ContactForm extends React.Component {
             message: '',
             terms: false
         }
+
     }
 
     static propTypes = {
@@ -33,6 +35,7 @@ export class ContactForm extends React.Component {
         this.state = s1;
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     /**
@@ -44,14 +47,13 @@ export class ContactForm extends React.Component {
         this.props.onSubmit(this.props.data)
     }
 
-
     handleInputChange(event) {
         // event.persist();
         let target = event.target;
         let value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
-        console.log(`handleInputChange [${name}]`, value, event.target);
+        // console.log(`handleInputChange [${name}]`, value, event.target);
 
         // event.target.value = value;
         let s1 = {...this.state};
@@ -76,10 +78,16 @@ export class ContactForm extends React.Component {
         {id: 4, label: 'Other question'},
     ]
 
+
     render() {
         // let data = this.state.data;
         let data = this.props.data;
-        return <form>
+
+        return <form
+            target={`_self`}
+            action={`none`}
+            onSubmit={this.handleSubmit}
+        >
 
             <h3>Contact Form</h3>
 
