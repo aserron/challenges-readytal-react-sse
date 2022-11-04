@@ -56,8 +56,8 @@ export class App extends React.Component {
         this.setState({
             contact: {
                 ...this.state.contact,
-                name    : user.name,
-                email   : user.email
+                name: user.name,
+                email: user.email
             },
             currentUser: user
         })
@@ -69,13 +69,16 @@ export class App extends React.Component {
         let that = this;
         return <div className="container">
             <div className="row">
-                {this.state.currentUser && <UserPanel user={this.state.currentUser}/>}
                 <div className="col-md-12">
-                    <div className="pull-right">
-                        <button className="btn btn-default" onClick={(e=>this.logIn())}>
+                    <div className="pull-right well-lg">
+                        {this.state.currentUser
 
-                            <i className="glyphicon glyphicon-user"></i> Log In
-                        </button>
+                            ? <UserPanel user={this.state.currentUser}/>
+
+                            : <button className="btn btn-default" onClick={(e => this.logIn())}>
+                                <i className="glyphicon glyphicon-user"></i> Log In
+                            </button>
+                        }
                     </div>
                 </div>
             </div>
@@ -87,7 +90,7 @@ export class App extends React.Component {
                 </div>
                 <div className="col-md-8">
                     {(this.state.sent)
-                        ? <Message/>
+                        ? <Message header={`Thank You`} text={`We will get back to you soon!`}/>
                         : <ContactForm data={this.state.contact}
                                        onChange={this.contactChanged}
                                        onSubmit={this.sendContact}/>

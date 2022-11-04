@@ -161,8 +161,13 @@ export class ContactForm extends React.Component {
                 </label>
 
             </div>
+            <div className="form-group">
 
-            <input type="submit" value="Send" className="contactform-submit"/>
+                <div className="space-top1">
+                <input type="submit" value="Send" className="contactform-submit"/></div>
+            </div>
+
+
         </form>
     }
 }
