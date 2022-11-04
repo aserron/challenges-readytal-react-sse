@@ -22,7 +22,7 @@ export class ContactForm extends React.Component {
 
     constructor(props) {
 
-        console.warn('FORM CONSTRUCTOR')
+        // console.warn('FORM CONSTRUCTOR')
 
         super(props)
 
@@ -50,15 +50,19 @@ export class ContactForm extends React.Component {
         let target = event.target;
         let value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        // event.target.value = value;
-        console.log(`handleInputChange [${name}]`, value, this.state);
 
-        this.setState((state, props) => {
-            let s1 = {...state};
-            s1.data[name] = value;
-            props.onChange(s1.data);
-            return s1;
-        });
+        console.log(`handleInputChange [${name}]`, value, event.target);
+
+        // event.target.value = value;
+        let s1 = {...this.state};
+        s1.data[name] = value;
+        this.props.onChange(s1.data);
+        // this.setState((state, props) => {
+        //     let s1 = {...state};
+        //     s1.data[name] = value;
+        //     props.onChange(s1.data);
+        //     return s1;
+        // });
     }
 
     isSelected(key, option) {
@@ -100,11 +104,17 @@ export class ContactForm extends React.Component {
             <div className="form-group row">
 
                 <label className="form-label col-xs-4" >
-                    <input onChange={this.handleInputChange} type="radio" name="option" value="A" checked={data.option === "A"}/> Option A</label>
+                    <input onChange={this.handleInputChange}
+                           type="radio" name="option" value="A"
+                           checked={data.option === "A"}/> Option A</label>
                 <label className="form-label col-xs-4">
-                    <input onChange={this.handleInputChange} type="radio" name="option" value="B" checked={data.option === "B"}/> Option B</label>
+                    <input onChange={this.handleInputChange}
+                           type="radio" name="option" value="B"
+                           checked={data.option === "B"}/> Option B</label>
                 <label className="form-label col-xs-4">
-                    <input onChange={this.handleInputChange}  type="radio" name="option" value="C" checked={data.option === "C"}/> Option C</label>
+                    <input onChange={this.handleInputChange}
+                           type="radio" name="option" value="C"
+                           checked={data.option === "C"}/> Option C</label>
 
             </div>
 
@@ -112,12 +122,12 @@ export class ContactForm extends React.Component {
 
             <div className="form-group">
                 <label className="form-label">What can we help you with:</label>
-                <select className="form-control" name="select" onChange={this.handleInputChange} >
+                <select name="select" onChange={this.handleInputChange} className="form-control" >
                     {this.options.map((it,k)=>(
                         <option
                                 key={`id-sel-${it.id}`}
                                 value={it.id}
-                                selected={data.select===it.id}
+                                selected={data.select===`${it.id}`}
                         >{it.label}</option>
                     ))}
 

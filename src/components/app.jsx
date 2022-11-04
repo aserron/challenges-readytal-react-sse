@@ -28,6 +28,7 @@ export class App extends React.Component{
     }
 
     contactChanged(contact){
+        contact.select = Number.parseInt(contact.select);
         console.log('contactChanged contact',contact);
         console.log('this',this);
         this.setState({
