@@ -14,7 +14,7 @@ export const Message = props => {
     return  <>
         <div className="text-center">
     {(renderChild)
-        ? {prop.children}
+        ? {props.children}
         : renderMessage()
     }
             </div>
