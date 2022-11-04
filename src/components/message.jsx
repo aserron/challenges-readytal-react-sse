@@ -6,10 +6,10 @@ export const Message = props => {
         renderChild=true;
     }
     
-    const renderMessage = ()=> (
+    const renderMessage = ()=> (<>
          <h3 className="message-header">{props.text || ''}</h3>
         <div class="message-body">{props.message || ''}</div>
-    )
+        </>)
     
     return  <>
         <div className="text-center">
