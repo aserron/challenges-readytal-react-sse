@@ -10,9 +10,9 @@ export class App extends React.Component{
         name: '',
         email: '',
         option:'A',
-        select: 1,
+        select: 2,
         type:'',
-        message:''
+        message:'xxx'
     }
     constructor(props){
         super(props)
