@@ -45,10 +45,10 @@ export class ContactForm extends React.Component{
         console.log(`handleInputChange [${name}]`,value,this.state);
 
         this.setState((state,props)=>{
-            let contact = {...state};
-            contact[name]= value;
-            props.onChange(contact);
-            return contact;
+            let s1 = {...state};
+            s1.data[name]= value;
+            props.onChange(s1.data);
+            return s1;
         });
     }
 
