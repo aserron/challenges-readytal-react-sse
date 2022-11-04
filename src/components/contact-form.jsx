@@ -38,10 +38,11 @@ export class ContactForm extends React.Component{
     }
 
     handleInputChange(event){
+        event.persist();
         let target = event.target;
         let value = target.type ==='checkbox' ? target.checked : target.value;
         const name = target.name;
-
+        event.target.value = value;
         console.log(`handleInputChange [${name}]`,value,this.state);
 
         this.setState((state,props)=>{
@@ -66,7 +67,7 @@ export class ContactForm extends React.Component{
     render(){
         let data = this.props.data;
 
-        return <form onChange={()=>{}}>
+        return <form>
 
         <h3>Contact Form</h3>
 
@@ -74,7 +75,7 @@ export class ContactForm extends React.Component{
             <label className="form-label">Your Name:</label>
             <input name="name"
                    className="form-control"
-                   defaultValue={data.name}
+                   value={data.name}
                    onChange={this.handleInputChange}
             />
         </div>
@@ -82,8 +83,8 @@ export class ContactForm extends React.Component{
         <div className="form-group">
             <label className="form-label">Your Best Email:</label>
             <input name="email" className="form-control"
-                   defaultValue={data.email}
-                   onChange={(e)=>{console.log(e.target.value)}}
+                   value={data.email}
+                   onChange={this.handleInputChange}
             />
         </div>
 
