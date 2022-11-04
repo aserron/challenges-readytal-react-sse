@@ -21,9 +21,15 @@ export class App extends React.Component{
             sent: false,
             currentUser: null
         }
+
+        // this.contactChanged = this.contactChanged.bind(this);
+        this.sendContact = this.sendContact.bind(this);
+        this.contactChanged = this.contactChanged.bind(this)
     }
 
     contactChanged(contact){
+        console.log('contactChanged contact',contact);
+        console.log('this',this);
         this.setState({
             contact
         })
@@ -47,11 +53,12 @@ export class App extends React.Component{
 
 
     render(){
+        let that=this;
         return <div className="container">
             <div className="row">
                 <div className="col-md-12">
                     <div className="pull-right">
-                        <button class="btn btn-default">
+                        <button className="btn btn-default">
                             <i className="glyphicon glyphicon-user"></i> Log In
                         </button>
                     </div>
@@ -64,7 +71,10 @@ export class App extends React.Component{
                     <img style={{width:'100%'}} src="http://via.placeholder.com/300x200"/>
                 </div>
                 <div className="col-md-8">
-                    <ContactForm data={this.state.contact} onChange={this.contactChanged} onSubmit={this.sendContact}/>
+                    <ContactForm data={this.state.contact}
+                                 onChange={this.contactChanged}
+
+                                 onSubmit={this.sendContact}/>
                 </div>
             </div>
         </div>
